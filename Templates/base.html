@@ -54,29 +54,27 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
                             <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="product-list.html" class="nav-item nav-link">Products</a>
-                            <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
-                            <a href="checkout.html" class="nav-item nav-link">Checkout</a>
-                            <a href="my-account.html" class="nav-item nav-link">My Account</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
-                                <div class="dropdown-menu">
-                                    <a href="wishlist.html" class="dropdown-item">Wishlist</a>
-                                    <a href="login.html" class="dropdown-item">Login & Register</a>
-                                    <a href="contact.html" class="dropdown-item">Contact Us</a>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="navbar-nav ml-auto">
+                             {% if user.is_authenticated %}
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
                                 <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item">Login</a>
-                                    <a href="#" class="dropdown-item">Register</a>
+                                    <a href="/accounts/Logout" class="dropdown-item">Logout</a>
+
                                 </div>
                             </div>
+                              {% else %}
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Login</a>
+                                     <a href="#" class="dropdown-item">Register</a>
                         </div>
+                    </div>
+                                {% endif %}
+                             </div>
                     </div>
                 </nav>
             </div>
@@ -95,20 +93,22 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+                        <form method='GET' action="/search">
                         <div class="search">
-                            <input type="text" placeholder="Search">
-                            <button><i class="fa fa-search"></i></button>
+                            <input name= "query" type="text" placeholder="Search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
                         </div>
+                            </form>
                     </div>
                     <div class="col-md-3">
                         <div class="user">
-                            <a href="wishlist.html" class="btn wishlist">
+                            <a href="/wish" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
-                                <span>(0)</span>
+                                <span>({{wish_counts}})</span>
                             </a>
-                            <a href="cart.html" class="btn cart">
+                            <a href="/cart" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>(0)</span>
+                                <span>({{cart_counts}})</span>
                             </a>
                         </div>
                     </div>
@@ -130,9 +130,9 @@
                         <div class="footer-widget">
                             <h2>Get in Touch</h2>
                             <div class="contact-info">
-                                <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
-                                <p><i class="fa fa-envelope"></i>email@example.com</p>
-                                <p><i class="fa fa-phone"></i>+123-456-7890</p>
+                                <p><i class="fa fa-map-marker"></i>Tinkune,Nepal</p>
+                                <p><i class="fa fa-envelope">infoadhikari2@gmail.com</i></p>
+                                <p><i class="fa fa-phone"></i>9823742305</p>
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                             <div class="contact-info">
                                 <div class="social">
                                     <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.facebook.com/profile.php?id=100027503767172"><i class="fab fa-facebook-f"></i></a>
                                     <a href=""><i class="fab fa-linkedin-in"></i></a>
                                     <a href=""><i class="fab fa-instagram"></i></a>
                                     <a href=""><i class="fab fa-youtube"></i></a>

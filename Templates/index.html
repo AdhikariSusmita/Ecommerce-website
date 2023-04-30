@@ -21,10 +21,10 @@
                         <div class="header-slider normal-slider">
                             {% for slider in sliders %}
                             <div class="header-slider-item">
-                                <img src="{{slider.image.url}}" alt="Slider Image" />
+                                <img src="{{slider.image.url}}" style="width=700px; height=100px;" alt="Slider Image" />
                                 <div class="header-slider-caption">
                                     <p>{{slider.description}}</p>
-                                    <a class="btn" href="{{slider.url}}"><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                    <a class="btn" href="{{slider.url}}"> <i class="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
                            {% endfor %}
@@ -236,7 +236,7 @@
                                     <img src="{{hot.image.url}}" alt="Product Image">
                                 </a>
                                 <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="/add_to_cart/{{hot.slug}}"><i class="fa fa-cart-plus"></i></a>
                                     <a href="/add_to_wishlist/{{hot.slug}}"><i class="fa fa-heart"></i></a>
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>
@@ -300,7 +300,7 @@
                                     <img src="{{hot.image.url}}" alt="Product Image">
                                 </a>
                                 <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="/add_to_cart/{{hot.slug}}"><i class="fa fa-cart-plus"></i></a>
                                     <a href="/add_to_wishlist/{{hot.slug}}"><i class="fa fa-heart"></i></a>
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>

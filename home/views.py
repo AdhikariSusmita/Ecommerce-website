@@ -163,25 +163,25 @@ def add_to_cart(request, slug):
                 total = discounted_price
             else:
                 total = price
-                data = Cart.objects.create(
-                    username = username,
-                    slug = slug,
-                    total = total,
-                    quantity = 1,
-                    items = Product.objects.get(slug=slug)
+            data = Cart.objects.create(
+                 username = username,
+                 slug = slug,
+                 total = total,
+                 quantity = 1,
+                 items = Product.objects.get(slug=slug)
                 )
-                data.save()
+            data.save()
     else:
         return redirect('/')
 
     return redirect('/cart')
 
 
-def reduce_quantity(request,slug):
+def reduce_quantity(request, slug):
     username = request.user.username
-    if Product.objects.filter(slug = slug).exists():
-        if Cart.objects.filter(slug = slug, checkout = False,username = username).exists():
-            quantity = Cart.objects.get(slug = slug, checkout = False, username = username).quantity
+    if Product.objects.filter(slug=slug).exists():
+        if Cart.objects.filter(slug=slug, checkout = False,username=username).exists():
+            quantity = Cart.objects.get(slug = slug, checkout=False, username=username).quantity
             price = Product.objects.get(slug = slug).price
             discounted_price = Product.objects.get(slug = slug).discounted_price
             if quantity > 1:
